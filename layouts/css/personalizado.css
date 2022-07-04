@@ -1,0 +1,26 @@
+html, body main{
+	background: #D8D3FD;
+}
+
+.form-signin{
+	width: 25rem;
+	height: 28rem;
+	margin: 5rem auto;
+	padding: 2rem 3rem;
+	background: #FFFFFF;
+	border-radius: 1rem;
+}
+
+.btn-primary{
+	margin: 1rem 0 0;
+}
+
+.container-fluid{
+	margin-right: 50px !important;
+}
+
+/*index*/
+.navbar-collapse .navbar-nav .nav-item .nav-link{
+	margin: 0 15rem 0 0 !important;
+}
+
