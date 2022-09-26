@@ -1,0 +1,8 @@
+ssh -i "aws-andreatique-ongoing.pem" ec2-user@ec2-44-210-17-109.compute-1.amazonaws.com
+
+mysql -u admin -h database-1.ckcjzugeidza.us-east-1.rds.amazonaws.com -p
+Db2L&arn
+
+telnet database-1.ckcjzugeidza.us-east-1.rds.amazonaws.com 3306
+
+mysql -u admin -pDb2L&arn -hdatabase-1.ckcjzugeidza.us-east-1.rds.amazonaws.com database-1 < dbigreja.sql

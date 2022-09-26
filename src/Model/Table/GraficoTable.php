@@ -132,5 +132,31 @@ class GraficoTable extends Table
 
     }
 
+
+    public function listaMembrosGraficoMeiaLua(){
+
+        $query = "SELECT
+                         SUM(membro_arrolado = 1) AS arrolado
+                        ,SUM(membro_arrolado != 1) AS nao_arrolado
+                    FROM 
+                        users Users;";
+
+        $conn = ConnectionManager::get('default');
+        $stmt = $conn->execute($query);
+        $dados = $stmt->fetchAll('assoc');
+
+
+        $retorno = [];
+
+        foreach ($dados as $d) {
+            $retorno['arrolados'] = floatval($d['arrolado']);
+            $retorno['nao_arrolados'] = floatval($d['nao_arrolado']);
+        }
+
+
+        return $retorno;
+
+    }
+
     
 }

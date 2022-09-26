@@ -33,11 +33,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Relatórios</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown03">
-            <li><a class="dropdown-item" href="#">Relatório 1</a></li>
-            <li><a class="dropdown-item" href="#">Relatório 2</a></li>
-            <li><a class="dropdown-item" href="#">Relatório 3</a></li>
-            <li><a class="dropdown-item" href="#">Relatório 4</a></li>
-            <li><a class="dropdown-item" href="#">Relatório 5</a></li>
+            <li><a class="dropdown-item" href="<?= BASE_URL."/relatorio/gerar-excel-fidelidade-ano-atual"?>">Dizimos membros mes/ano (xls)</a></li>
+            <li><a class="dropdown-item" href="<?= BASE_URL."/relatorio/gerar-pdf-fidelidade-ano-atual"?>">Dizimos membros mes/ano (pdf)</a></li>
           </ul>
         </li>
       </ul>

@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Core\Configure;
 
 /**
  * Application Controller
@@ -41,7 +42,9 @@ class AppController extends Controller
     {
         parent::initialize();
 
-        
+        date_default_timezone_set('America/Bahia');
+
+        Configure::write('Request.user_obj', $this->request->session()->read('Auth.User.obj'));
 
         $this->loadComponent('RequestHandler', [
             'enableBeforeRedirect' => false,

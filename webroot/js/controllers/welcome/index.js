@@ -182,7 +182,33 @@ var index = {
         });
     },
 
-    graficoMeiaLua : function(){
+
+    dadosGraficoMeiaLua : function(){
+
+        var url = ajaxurl + "welcome/get-dados-grafico-meia-lua";
+        
+
+        jQuery.ajax({
+            type: "post",
+            data: {},
+            cache: false,
+            url: url,
+            dataType: "json",
+            headers: {'X-CSRF-TOKEN': $("input[name=_csrfToken]").val()},
+            error: function (request, error) {
+                //console.log('Erro ao buscar', request.message);
+                console.log("errado");
+            },
+            success: function (response) {
+                console.log(response.resultado);
+                index.graficoMeiaLua(response.resultado.arrolados, response.resultado.nao_arrolados);
+            }
+        });
+
+    },
+
+
+    graficoMeiaLua : function(arrolados, nao_arrolados){
 
         Highcharts.chart('container3', {
             chart: {
@@ -225,9 +251,9 @@ var index = {
                 name: 'Browser share',
                 innerSize: '50%',
                 data: [
-                    ['Ativos', 58.9],
-                    ['Separado', 13.29],
-                    ['Inativos', 13],
+                    ['Ativos', arrolados],
+                    //['Separado', 13.29],
+                    ['Inativos', nao_arrolados],
                     /*['Edge', 3.78],
                     ['Safari', 3.42],
                     {
@@ -290,7 +316,7 @@ $(document).ready(function(){
   
     index.dadosGraficoBarra();
     index.dadosGraficoPizza();
-    index.graficoMeiaLua();
+    index.dadosGraficoMeiaLua();
         
 });
 

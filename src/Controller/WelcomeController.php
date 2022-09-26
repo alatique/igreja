@@ -34,6 +34,15 @@ class WelcomeController extends AppController
 
     }
 
+    public function getDadosGraficoMeiaLua(){
+
+        $this->loadModel('Grafico');
+        $resultado = $this->Grafico->listaMembrosGraficoMeiaLua();
+        $this->set(compact('resultado'));
+        $this->set('_serialize', ['resultado']);
+
+    }
+
 
 
 }

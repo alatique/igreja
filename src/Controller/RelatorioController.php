@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Controller\AppController;
 
+
 class RelatorioController extends AppController
 {
     
@@ -11,6 +12,24 @@ class RelatorioController extends AppController
         /*$this->viewBuilder()->layout('admin');*/
 
     }
+
+    public function gerarExcelFidelidadeAnoAtual(){
+
+        $this->loadModel('Excel');
+        $this->Excel->relatorioFidelidadeAnoAtual();
+        die();      
+
+    }
+
+
+    public function gerarPdfFidelidadeAnoAtual(){
+
+        $this->loadModel('Pdf');
+        $this->Pdf->relatorioFidelidadeAnoAtual();
+        die();      
+
+    }
+
 
     public function gerar($usuario_id){
 
