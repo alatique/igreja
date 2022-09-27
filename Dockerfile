@@ -1,4 +1,4 @@
 FROM php:7.2-apache
-WORKDIR /app-php
+WORKDIR .
 COPY . .
 CMD [ "php", "./src/Template/Users/login.ctp" ]
