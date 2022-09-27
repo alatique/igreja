@@ -6,6 +6,7 @@ RUN apt-get update
 
 # install the required components 
 RUN apt-get update
+RUN apt-get install -y apt-utils
 RUN apt-get install -y libmcrypt-dev 
 RUN apt-get install -y  g++
 RUN apt-get install -y  libicu-dev
