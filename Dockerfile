@@ -1,6 +1,6 @@
-FROM php:7.4.30-apache
-WORKDIR /igreja
-COPY . /igreja
+FROM php:7.1-apache
+MAINTAINER Potato Powered Software <support@potatopowered.net>
+
 # update apt-get 
 RUN apt-get update
 
