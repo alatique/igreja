@@ -1,5 +1,4 @@
-FROM php:7.1-apache
-MAINTAINER Potato Powered Software <support@potatopowered.net>
+FROM php:7.4-apache
 
 # update apt-get 
 RUN apt-get update
