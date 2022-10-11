@@ -1,0 +1,21 @@
+php:
+  container_name: sysigreja
+  build: ./
+  ports:
+    - "8080:80"
+    - "443:443"
+  volumes:
+    - ../:/var/www/html:cached
+  links: 
+      - dbigreja
+
+dbigreja:
+  container_name: dbigreja
+  image: mysql:5.6
+  ports:
+    - "3310:3306"
+  volumes:
+   - ../../data:/var/lib/mysql
+  environment:
+   - MYSQL_ROOT_PASSWORD=Al@00809
+   - MYSQL_DATABASE=dbipm

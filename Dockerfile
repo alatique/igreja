@@ -1,39 +1,22 @@
-FROM php:7.1-apache
+FROM php:7.4-apache-buster
 MAINTAINER Potato Powered Software <support@potatopowered.net>
 
-# update apt-get 
-RUN apt-get update
-
-# install the required components 
-RUN apt-get update
-RUN apt-get install -y libmcrypt-dev 
-RUN apt-get install -y  g++
-RUN apt-get install -y  libicu-dev
-RUN apt-get install -y  libmcrypt4
-# RUN apt-get install -y  libicu52
-RUN apt-get install -y  zlib1g-dev
-# RUN apt-get install -y  git
-
-
-
 # install the PHP extensions we need 
+RUN apt-get update && apt-get install -y zlib1g-dev libicu-dev g++
+RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
-RUN docker-php-ext-install mcrypt
-RUN docker-php-ext-install mbstring
-RUN docker-php-ext-install pdo_mysql
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
+RUN apt-get update && apt-get install -y \
+    zlib1g-dev \
+    libzip-dev \
+    unzip
 RUN docker-php-ext-install zip
-
-
-#RUN pecl install xdebug
-#RUN docker-php-ext-enable xdebug
-
-#####ADD ADDITIONAL INSTALLS OR MODULES BELOW######### 
-#####ADD ADDITIONAL INSTALLS OR MODULES ABOVE######### 
-
-# cleanup after the installations 
-RUN apt-get purge --auto-remove -y libmcrypt-dev g++ libicu-dev zlib1g-dev
-# delete the lists for apt-get as the take up space we do not need. 
-RUN rm -rf /var/lib/apt/lists/*
+RUN docker-php-ext-install pdo_mysqly
 
 # install composer globally so that you can call composer directly 
 RUN curl -sSL https://getcomposer.org/installer | php
