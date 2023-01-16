@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     unzip
 RUN docker-php-ext-install zip
-RUN docker-php-ext-install pdo_mysqly
+RUN docker-php-ext-install pdo_mysql
 
 # install composer globally so that you can call composer directly 
 RUN curl -sSL https://getcomposer.org/installer | php
